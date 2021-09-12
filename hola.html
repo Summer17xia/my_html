@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+
+        body{
+            /* margin:10px; */
+            width:100%;
+            /* min-width:1000px; */
+            max-width:100%;
+            height:100%;
+            background-color:white;
+
+            /* width:450px;
+            height: 360px; */
+            overflow-x:scroll;
+            /* overflow-x:hidden; */
+            /* display:block; */
+            min-width:60%;
+            /* max-width:30%; 
+            margin-right: 1000px; */
+            float: left;
+            /* background:url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/tg-chang1ea8a2.png) no-repeat; */
+            /* background:url(1.jpg); */
+            /* background-position: 260px 197px; */
+            /* background-size:100%; */
+        }
+    </style>
+    <style>
+        /*<center>*/
+        div.a{
+            background:url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/tg-chang1ea8a2.png) no-repeat;
+            background-position: 100% 20%;
+            font-family: "Cursive", "Courier New", monospace;
+            text-decoration: no-underline;
+            margin-top: 0px;
+            /* background-color:#eff4fa; */
+            color:#585252;
+            /* text-shadow: 1px 1px; */
+            font-size: 17px;
+            font-variant: small-caps;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-left: 0%;
+            /* padding-top: 50px; */
+            /* position: 20% 20%; */
+            }
+    </style>
+    <style>
+         div.c{
+            font-family: "Cursive", "Courier New", monospace;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            border: 2px solid cacaca;
+            border-radius: 5px;
+            margin-top: -30px;
+            margin-left: 0%;
+            width: 100%;
+            font-size: 5px;
+            /* padding-left: 100px; */
+            background-color: #bad2fd;
+            min-width: 90px;
+
+        }
+    </style>
+
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="c">
+        <td class="aaa">Summer</td> 
+        <img style="width: 50px;border-radius: 50%;margin-bottom: -20px;" src="/p/cat.jpg" />               
+        <a style="color:white;" href="{% url 'ind' 1 %}">浏览视频列表 |</a>
+        <a style="color:white;" href="{% url 'upinfo' 1 %}">浏览Up主列表 |</a>
+        <a style="color:white;" href="{% url 'find'%}">进入搜索界面</a>
+        视频数量:5047
+    </div>
+
+    
+
+    <div class="a">
+        
+
+        <table width="1000" >
+
+            {%for user in userlist%}
+                <tr>
+                    
+                    <td>
+                        <asas style="margin-bottom: 100px;font-size: 60px;font-weight: bolder;color: darkgray;">{{user.id}}</asas>
+                        <td><img src={{user.封面照片}} width=170 style="margin-left: 0%;border-radius: 5px;" /></td>
+                         
+                    </td>
+                    <td>
+                            
+                            <p><a style="color: black;" href="{% url 'vediodetails' user.视频名称 %}">{{user.视频名称}}</a></p>
+                            <ppp style="font-size: 8px;">
+                                
+                                播放量"{{user.播放量}}
+                                弹幕数:{{user.弹幕数}}
+                                评论数:{{user.评论数}}
+                                上传日期:{{user.上传日期}}
+                                点赞数:{{user.点赞数}}
+                                收藏数:{{user.收藏数}}
+                                香蕉数:{{user.香蕉数}}
+                                UP主名称:{{user.UP主名称}}
+                            </ppp>
+                            <hr/>
+                            <br>
+                            <!-- <br> -->
+                    </td>   
+                     
+                </tr>
+                  
+            {%endfor%}
+        </table>
+
+        <br><br><br>
+        <center>
+
+        <a href="{% url 'ind' up %}" >
+        <button>上一页</button ></a >
+
+        <a href="{% url 'ind' 1 %}" >
+        <button>1</button ></a >
+
+        <span class="pager_ellipsis">···</span>
+
+
+
+        {%for cnmm in cnm%}
+            <tr>
+                <a href="{% url 'ind' cnmm %}" >
+                <button>{{cnmm}}</button ></a >
+            </tr>
+        {%endfor%}
+
+        <span class="pager_ellipsis">···</span>
+
+
+        <a href="{% url 'ind' 253 %}" >
+        <button>253</button ></a >
+        
+        <a href="{% url 'ind' down %}" >
+        <button>下一页</button ></a >
+
+        <br>
+        <br>
+        <form action="{% url 'ind' 1 %}" method ="post">
+            {% csrf_token %}
+                    跳转至
+                        <input type="number" name="page" style="width:30px"/>
+                    页
+        </form>  
+      </center>
+
+    </div>
+
+    
+</body>
+</html>

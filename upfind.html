@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* width:450px;
+            height: 360px; */
+            overflow:auto;
+            /* overflow-x:hidden; */
+            display:block;
+            float: right;
+            /* background:url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/tg-chang1ea8a2.png) no-repeat; */
+            /* background:url(1.jpg); */
+            /* background-position: 260px 197px; */
+            background-size:30%;
+        }
+    </style>
+    <style>
+        /*<center>*/
+        div.a{
+            background:url(https://rescdn.qqmail.com/zh_CN/htmledition/images/webp/tg-chang1ea8a2.png) no-repeat;
+            background-position: 1060px 197px;
+            font-family: "Cursive", "Courier New", monospace;
+            text-decoration: no-underline;
+            margin-top: 0px;
+            /* background-color:#eff4fa; */
+            color:#585252;
+            /* text-shadow: 1px 1px; */
+            font-size: 17px;
+            font-variant: small-caps;
+            padding-left: 50px;
+            padding-right: 500px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-left: 900px;
+            /* padding-top: 50px; */
+            position: 950px -50000px;
+            }
+    </style>
+    <style>
+         div.c{
+            font-family: "Cursive", "Courier New", monospace;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            border: 2px solid cacaca;
+            border-radius: 5px;
+            margin-top: -30px;
+            margin-left: 940px;
+            width: 61.7%;
+            font-size: 5px;
+            /* padding-left: 100px; */
+            background-color: #bad2fd;
+        }
+    </style>
+</head>
+<body>
+    <div class="c">
+        <td class="aaa"> Summer</td> 
+        <img style="width: 50px;border-radius: 50%;margin-bottom: -20px;" src="/p/cat.jpg" />               
+        <a style="color:white;" href="{% url 'ind' 1 %}">浏览视频列表 |</a>
+        <a style="color:white;" href="{% url 'upinfo' 1 %}">浏览Up主列表 |</a>
+        <a style="color:white;" href="{% url 'find'%}">进入搜索界面</a>
+        搜索时间:{{time}}搜索结果:{{length}}
+    </div>
+
+    <center>
+        <div class="a">
+            <table width="1000">
+                {%for user in userlist%}
+                <tr>
+                    <td>
+                        <asas style="margin-bottom: 100px;font-size: 20px;font-weight: bolder;color: darkgray;">{{user.UPID}}</asas>
+                        <td><img src={{user.UP主头像}} width=140 style="margin-left: 20px;border-radius: 5px;" /></td>
+                        
+                    </td>
+                    <td>
+                            <p><a style="color: black;" href="{% url 'updetails' user.UP主名称 %}">{{user.UP主名称}}</a></p>
+                            <ppp style="font-size: 8px;">
+                            {{user.UP主介绍}}
+                            <ppp/>
+                            <hr>
+                            <br>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+            <form action="{% url 'upfind'%}" method ="get">
+                {% csrf_token %}
+                            <input type="submit" value=上一页/>
+                            <input type="hidden" name="kind" value={{calll}}/>
+                            <input type="hidden" name="page" value={{up}}/>
+                        </form>
+                        <br>
+
+            <form action="{% url 'upfind'%}" method ="get">
+            {% csrf_token %}
+                <input type="hidden" name="id"/>
+                <input type="hidden" name="kind" value={{calll}}/>
+                <!-- <form action="{% url 'upfind'%}" method ="post"> -->
+
+                <input type="submit" name="page" value="1"/>
+                <!-- </form> -->
+                <span class="pager_ellipsis">···</span>
+                <!-- <form action="{% url 'upfind'%}" method ="post"> -->
+                <!-- {% csrf_token %} -->
+                {%for cnmm in cnm%}
+                <tr>
+                    <input type="submit" name="page" value={{cnmm}}>
+                </tr>
+                {%endfor%}
+                <!-- </form> -->
+    
+                <span class="pager_ellipsis">···</span>
+
+                {%for uiuiui in lennn%}
+                    <input type="submit" name="page" value={{uiuiui}}/>
+                {%endfor%}
+
+
+                
+            </form>             
+
+            <br>
+
+            <form action="{% url 'upfind'%}" method ="get">
+                {% csrf_token %}
+                跳转至
+                    <input type="hidden" name="kind" value={{calll}}/>
+                    <input type="number" name="page" style="width:30px"/>
+                页
+            </form>
+            <br>
+
+            <form action="{% url 'upfind'%}" method ="get">
+                {% csrf_token %}
+                                <input type="submit" value=下一页/>
+                                <input type="hidden" name="kind" value={{calll}}/>
+                                <input type="hidden" name="page" value={{down}}/>
+                            </form>
+                            <br>
+
+        
+        </div>
+
+    </center>
+    
+</body>
+</html>
